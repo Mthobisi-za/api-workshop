@@ -1,14 +1,140 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-	<meta charset="UTF-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<meta http-equiv="X-UA-Compatible" content="ie=edge">
-	<title>Filter widget</title>
-	<link rel="stylesheet" href="style.css">
 
+<head>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.3/css/bulma.min.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Filter widget</title>
+    <link rel="stylesheet" href="./style.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.4.2/handlebars.js" integrity="sha256-hSzapznWRy/aOZkctlN03an9DxCLlN8ZCQS0lxntiHg=" crossorigin="anonymous"></script>
+    <script type="template-x" class="options">
+
+        <label for="type">Select Option for only colors</label> <br> <br>
+        <select name="type" id="type" class='optionval'>
+			{{#each data}}
+			<option value="{{this}}">{{this}}</option>
+			{{/each}}
+		</select> <br> <br> <button class="btn">Submit</button>
+    </script>
+    <script type="template-x" class="actualData">
+        {{#each data}}
+        <div class="card">
+            <ul>
+                <li>{{this.make}}</li>
+                <li>{{this.model}}</li>
+                <li>{{this.color}}</li>
+                <li>{{this.price}}</li>
+                <li>{{this.reg_number}}</li>
+            </ul>
+        </div>
+        {{/each}}
+
+    </script>
+    <script type="template-x" class="makeOptionval">
+        <label for="type">Select Option for cars only</label> <br> <br>
+        <select name="type" id="type" class='makeoptionval'>
+			{{#each data}}
+			<option value="{{this}}">{{this}}</option>
+			{{/each}}
+		</select> <br> <br> <button class="makebtn">Submit</button>
+    </script>
+    <!-------full script-->
+    <script type="template-x" class="fullscriptoption1">
+        <label for="type">Select Option</label> <br> <br>
+        <select name="type" id="type" class='makeoptionval1'>
+			{{#each data}}
+			<option value="{{this}}">{{this}}</option>
+			{{/each}}
+		</select>
+        <br> <br>
+    </script>
+    <script type="template-x" class="fullscriptoption2">
+        <label for="type">Select Option</label> <br> <br>
+        <select name="type" id="type" class='makeoptionval2'>
+			{{#each data}}
+			<option value="{{this}}">{{this}}</option>
+			{{/each}}
+		</select>
+        <br> <br>
+        <button class="fullbtn2">Submit</button>
+    </script>
 </head>
+
 <body>
-	<h1>Filter widget</h1>
+    <h1 style="margin-left: 5%;">Filter widget</h1>
+    <h1 class="subtitle has-text-centered">Select your choice</h1>
+    <div class="container">
+        <div class="hold" style="display: flex; gap: 5%;">
+            <div class="flexdright " style="display: flex; gap: 5%;">
+                <div class="widget has-text-centered"></div>
+                <div class="makeWidget has-text-centered"></div>
+            </div>
+            <div class="flexedleft has-text-centered">
+                <div class="leftwidget ">
+                    <div class="fullform" style="display: flex;gap: 5%;">
+                        <div class="full1"></div>
+                        <div class="full2"></div>
+
+                    </div>
+                </div>
+                <div class="space"></div>
+            </div>
+
+        </div> <br> <br>
+        <div class="dynamic has-text-centered">
+
+        </div>
+    </div>
+    <br> <br> <br>
 </body>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.19.0/axios.min.js" integrity="sha256-S1J4GVHHDMiirir9qsXWc8ZWw74PHHafpsHp5PXtjTs=" crossorigin="anonymous"></script>
+<script src="./js/widget.js"></script>
+
 </html>
+<style>
+    .flexedleft,
+    .flexdright {
+        width: 50%;
+        background-color: white;
+        border-radius: 30;
+    }
+    
+    .columns {
+        display: block;
+        text-align: center;
+    }
+    
+    .space {
+        min-height: 20px;
+    }
+    
+    .widget,
+    .makeWidget {
+        min-width: 15%;
+        text-align: center;
+    }
+    
+    .hold {
+        width: 100%;
+        margin: auto;
+    }
+    
+    .dynamic {
+        width: 90%;
+        margin: auto;
+        display: flex;
+        flex-wrap: wrap;
+        column-gap: 1%;
+        row-gap: 10px;
+    }
+    
+    .card {
+        max-width: 5%;
+    }
+    
+    .full1 {
+        margin-left: 5%;
+    }
+</style>

@@ -2,6 +2,7 @@ const express = require('express');
 const exphbs = require('express-handlebars');
 const bodyParser = require('body-parser');
 const session = require('express-session');
+var axios = require('axios');
 
 const app = express();
 
@@ -22,8 +23,12 @@ app.use(bodyParser.urlencoded({ extended: false }));
 // parse application/json
 app.use(bodyParser.json());
 
-const PORT = process.env.PORT || 3010;
+app.post('/colors', (req, res) => {
+    var data = req.body;
+    console.log(data);
+})
+const PORT = process.env.PORT || 5000;
 
-app.listen(PORT, function () {
+app.listen(PORT, function() {
     console.log('started on: ', this.address().port);
 });
